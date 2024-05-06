@@ -1,0 +1,83 @@
+:root {
+    --light-grey: #ddd;
+    --light-medium-grey: #aaa;
+    --medium-grey: #888;
+    --medium-dark-grey: #666;
+}
+
+.calendar-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.date-outer-container {
+    height: 70px;
+    width: 16px;
+    margin-top: 50px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.date-inner-container {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.date-bar {
+    height: 8px;
+    border-left: 1px solid var(--medium-grey);
+    border-right: 1px solid var(--medium-grey);
+    margin-left: -1px;
+}
+
+.weekday {
+    background-color: var(--light-grey);
+}
+
+.weekend {
+    background-color: var(--light-medium-grey);
+}
+
+.first-of-month {
+    border-left: 1.7px solid black;
+}
+
+.month-display {
+    position: absolute;
+    top: 72px;
+    font-family: sans-serif;
+    font-size: 9px;
+    padding-left: 2px;
+    border-left: 1.7px solid black;
+    margin-left: -1px;
+}
+
+.event {
+    height: 10px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 10px;
+}
+
+.event-type-final {
+    border-radius: 50%;
+}
+
+.event-type-semi {
+    height: 6px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    width: 6px;
+    border-radius: 50%;
+}
+
+.event-type-selection {
+    height: 6px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    width: 6px;
+}
