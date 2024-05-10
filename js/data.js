@@ -1,41 +1,41 @@
 const countries = {
-    armenia: 'arm',
-    australia: 'austl',
-    austria: 'aust',
-    azer: 'azer',
-    belgium: 'bel',
-    croatia: 'cr',
-    cyprus: 'cy',
-    czech: 'cz',
-    denmark: 'den',
-    albania: 'alb',
-    finland: 'fin',
-    france: 'fra',
-    estonia: 'est',
-    georgia: 'geo',
-    germany: 'ger',
-    greece: 'gre',
-    iceland: 'ice',
-    ireland: 'ice',
-    israel: 'isr',
-    italy: 'it',
-    latvia: 'lat',
-    lith: 'lith',
-    lux: 'lux',
-    malta: 'mal',
-    marino: 'sm',
-    moldova: 'mol',
-    neth: 'neth',
-    norway: 'nor',
-    poland: 'pol',
-    portugal: 'por',
-    serbia: 'ser',
-    slovenia: 'slo',
+    armenia: 'armenia',
+    australia: 'australia',
+    austria: 'austria',
+    azerbaijan: 'azerbaijan',
+    belgium: 'belgium',
+    croatia: 'croatia',
+    cyprus: 'cyprus',
+    czechia: 'czechia',
+    denmark: 'denmark',
+    albania: 'albania',
+    finland: 'finland',
+    france: 'france',
+    estonia: 'estonia',
+    georgia: 'georgia',
+    germany: 'germany',
+    greece: 'greece',
+    iceland: 'iceland',
+    ireland: 'ireland',
+    israel: 'israel',
+    italy: 'italy',
+    latvia: 'latvia',
+    lithuania: 'lithuania',
+    luxembourg: 'luxembourg',
+    malta: 'malta',
+    'san marino': 'san marino',
+    moldova: 'moldova',
+    netherlands: 'netherlands',
+    norway: 'norway',
+    poland: 'poland',
+    portugal: 'portugal',
+    serbia: 'serbia',
+    slovenia: 'slovenia',
     spain: 'spain',
-    sweden: 'swe',
-    switz: 'switz',
-    uk: 'uk',
-    ukraine: 'ukr',
+    sweden: 'sweden',
+    switzerland: 'switzerland',
+    'united kingdom': 'united kingdom',
+    ukraine: 'ukraine',
 }
 
 const types = {
@@ -46,7 +46,7 @@ const types = {
 
 const events = [
     {
-        country: countries.czech,
+        country: countries.czechia,
         event: types.final,
         date: new Date("2023-12-04")
     },
@@ -56,7 +56,12 @@ const events = [
         date: new Date("2023-12-22")
     },
     {
-        country: countries.lux,
+        country: countries.ireland,
+        event: types.final,
+        date: new Date("2024-01-26")
+    },
+    {
+        country: countries.luxembourg,
         event: types.final,
         date: new Date("2024-01-27")
     },
@@ -64,6 +69,11 @@ const events = [
         country: countries.ukraine,
         event: types.semi,
         date: new Date("2023-12-21")
+    },
+    {
+        country: countries.ukraine,
+        event: types.final,
+        date: new Date("2024-02-03")
     },
     {
         country: countries.malta,
@@ -302,7 +312,7 @@ const events = [
     },
     {
         country: countries.moldova,
-        event: types.final,
+        event: types.semi,
         date: new Date("2024-01-13")
     },
     {
@@ -326,62 +336,62 @@ const events = [
         date: new Date("2024-02-17")
     },
     {
-        country: countries.lith,
+        country: countries.lithuania,
         event: types.semi,
         date: new Date("2024-01-13")
     },
     {
-        country: countries.lith,
+        country: countries.lithuania,
         event: types.semi,
         date: new Date("2024-01-20")
     },
     {
-        country: countries.lith,
+        country: countries.lithuania,
         event: types.semi,
         date: new Date("2024-01-27")
     },
     {
-        country: countries.lith,
+        country: countries.lithuania,
         event: types.semi,
         date: new Date("2024-02-03")
     },
     {
-        country: countries.lith,
+        country: countries.lithuania,
         event: types.semi,
         date: new Date("2024-02-10")
     },
     {
-        country: countries.lith,
+        country: countries.lithuania,
         event: types.final,
         date: new Date("2024-02-17")
     },
     {
-        country: countries.marino,
+        country: countries['san marino'],
         event: types.semi,
         date: new Date("2024-02-19")
     },
     {
-        country: countries.marino,
+        country: countries['san marino'],
         event: types.semi,
         date: new Date("2024-02-20")
     },
     {
-        country: countries.marino,
+        country: countries['san marino'],
         event: types.semi,
         date: new Date("2024-02-21")
     },
     {
-        country: countries.marino,
+        country: countries['san marino'],
         event: types.semi,
         date: new Date("2024-02-22")
     },
     {
-        country: countries.marino,
+        country: countries['san marino'],
         event: types.semi,
         date: new Date("2024-02-23")
     },
     {
-        country: countries.marino,
+        country: countries['san marino'],
         event: types.final,
         date: new Date("2024-02-24")
     },
@@ -516,17 +526,17 @@ const events = [
         date: new Date("2024-02-20")
     },
     {
-        country: countries.switz,
+        country: countries.switzerland,
         event: types.selection,
         date: new Date("2024-02-29")
     },
     {
-        country: countries.neth,
+        country: countries.netherlands,
         event: types.selection,
         date: new Date("2023-12-11")
     },
     {
-        country: countries.neth,
+        country: countries.netherlands,
         event: types.selection,
         date: new Date("2024-02-29")
     },
@@ -541,12 +551,12 @@ const events = [
         date: new Date("2024-03-01")
     },
     {
-        country: countries.uk,
+        country: countries['united kingdom'],
         event: types.selection,
         date: new Date("2023-12-16")
     },
     {
-        country: countries.uk,
+        country: countries['united kingdom'],
         event: types.selection,
         date: new Date("2024-03-01")
     },
@@ -586,12 +596,12 @@ const events = [
         date: new Date("2024-03-13")
     },
     {
-        country: countries.azer,
+        country: countries.azerbaijan,
         event: types.selection,
         date: new Date("2024-03-07")
     },
     {
-        country: countries.azer,
+        country: countries.azerbaijan,
         event: types.selection,
         date: new Date("2024-03-15")
     }
