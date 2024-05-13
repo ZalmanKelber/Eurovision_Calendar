@@ -1,9 +1,8 @@
-(function() {
+const renderCalendar = (() => {
 
     const renderDates = () => {
         const container = document.querySelector('.calendar-container');
-        const startDate = new Date('2023-05-14');
-        const endDate = new Date('2024-05-06');
+        const { startDate, endDate } = calendarPeriod;
     
         let currDate = startDate;
         while (currDate <= endDate) {
@@ -43,7 +42,30 @@
             eventEl.classList.add('event-type-' + event.event);
             eventEl.addEventListener('click', () => {
                 selectOperations.selectCountry(event.country);
-            })
+                const linkEl = eventEl.querySelector('.external-link');
+                if (linkEl) {
+                    selectOperations.displayLink(linkEl);
+                }
+            });
+            if (event.url && event.text) {
+                const linkDiv = document.createElement('div');
+                linkDiv.className = 'external-link';
+                const link = document.createElement('a');
+                link.innerText = `${event.date.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })}: ${event.text}`;
+                link.setAttribute('href', event.url);
+                link.setAttribute('target', '_blank');
+                linkDiv.appendChild(link);
+                linkDiv.addEventListener('click', e => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    if (e.target.classList.contains('external-link')) {
+                        window.open(e.target.querySelector('a').href, '_blank');
+                    } else {
+                        window.open(e.target.href, '_blank');
+                    }
+                })
+                eventEl.appendChild(linkDiv);
+            }
             dateEl.appendChild(eventEl);
         });
     }
@@ -55,7 +77,7 @@
         const numCols = Math.floor((containerWidth - 430) / 12);
         const dateContainers = document.querySelectorAll('.date-outer-container');
         dateContainers.forEach((dateContainer, i) => {
-            if ((i + 1) % numCols === 0 && i < numCols * numRows) {
+            if ((i + 1) % numCols === 0 && i < numCols * numRows && containerWidth > 748) {
                 dateContainer.setAttribute('style', `margin-right: ${containerWidth - numCols * 12}px`)
             } else {
                 dateContainer.setAttribute('style', 'margin-right: 0');
@@ -67,12 +89,6 @@
     renderEvents();
     setMargins();
 
-    let throttled = false;
-    window.addEventListener('resize', () => {
-         setMargins();
-        setTimeout(() => {
-            throttled = false;
-        }, 200);
-    });
+   return { setMargins }
 
 })();

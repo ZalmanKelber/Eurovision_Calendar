@@ -1,10 +1,19 @@
 const selectOperations = (() => {
+    const displayLink = linkEl => {
+        linkEl.classList.add('visible-link');
+        const left = Math.min(linkEl.offsetWidth, linkEl.getBoundingClientRect().left - 10);
+        linkEl.setAttribute('style', `left: -${left}px`);
+    }
+
     const deselectCountries = () => {
-        const events = document.querySelectorAll('.event');
-        events.forEach(event => {
+        document.querySelectorAll('.event').forEach(event => {
             event.classList.remove('inactive');
             event.classList.remove('active')
         });
+        document.querySelectorAll('.visible-link').forEach(link => {
+            link.classList.remove('visible-link');
+            link.setAttribute('style', 'left: 0');
+        })
         const shapes = document.querySelectorAll('.esc');
         shapes.forEach(shape => {
             shape.classList.remove('highlighted')
@@ -33,5 +42,5 @@ const selectOperations = (() => {
         }
     }
 
-    return { deselectCountries, selectCountry }
+    return { deselectCountries, selectCountry, displayLink }
 })();
