@@ -1,6 +1,9 @@
 const renderMap = (() => {
     const state = {
       mapData: null,
+      projection: null,
+      pathGenerator: null,
+      svg: null
     }
   
     const { select, selectAll, json, geoPath, geoConicEqualArea } = d3;
@@ -51,29 +54,27 @@ const renderMap = (() => {
     }
   
     const renderMap = () => {
-        let svg = select("#map");
-        const pathGenerator = geoPath().projection(state.projection);
         const containerWidth = window.innerWidth - 20;
         const width = containerWidth <= 748 ? containerWidth : 420;
         const height = 340;
-        svg.remove();
-        svg = selectAll("#map-container").append("svg");
-        svg
+        state.svg.remove();
+        state.svg = selectAll("#map-container").append("svg");
+        state.svg
             .attr("class", "map")
             .attr("width", width)
             .attr("height", height);
     
-        const gMap = svg.append("g");
+        const gMap = state.svg.append("g");
     
         gMap.append("path")
             .attr("class", "sphere")
-            .attr("d", pathGenerator({type: "Sphere"}));
+            .attr("d", state.pathGenerator({type: "Sphere"}));
     
         gMap.selectAll("path[class=country]")
             .data(state.mapData.features)
             .enter().append("path")
             .attr("class", getCountryClasses)
-            .attr("d", pathGenerator)
+            .attr("d", state.pathGenerator)
             .on('click', d => selectOperations.selectCountry(d.properties.name.toLowerCase()));
             
         const translateX = containerWidth < 396 ? -443 : -423;
@@ -83,9 +84,11 @@ const renderMap = (() => {
 
 
     json("https://cdn.jsdelivr.net/npm/world-atlas@2.0.2/countries-50m.json", data => {
+        state.svg = select("#map");
         state.projection = geoConicEqualArea()
         .parallels([0, 63.5])
         .rotate([-10, 0])
+        state.pathGenerator = geoPath().projection(state.projection);
       state.mapData = feature(data, data.objects.countries);
         editMapData();
       renderMap();
