@@ -212,8 +212,16 @@ h2.title {
     fill: #ec9177;
   }
 
+  .internal-selection {
+    fill: #fa9f8d;
+  }
+
   .not-esc {
-    fill: #edd4b4;
+    fill: #ededed;
+  }
+
+  .non-returning {
+    fill: #eddfcf;
   }
 
   

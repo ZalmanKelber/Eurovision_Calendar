@@ -2,7 +2,7 @@ const renderCalendar = (() => {
 
     const renderDates = () => {
         const container = document.querySelector('.calendar-container');
-        const { startDate, endDate } = calendarPeriod;
+        const { startDate, endDate } = eurovisionData.calendarPeriod;
     
         let currDate = startDate;
         while (currDate <= endDate) {
@@ -34,7 +34,7 @@ const renderCalendar = (() => {
     }
 
     const renderEvents = () => {
-        events.forEach(event => {
+        eurovisionData.events.forEach(event => {
             const dateEl = document.querySelector('.date-' + event.date.toISOString().substring(0, 10));
             const eventEl = document.createElement('div');
             eventEl.className = 'event';
@@ -74,7 +74,7 @@ const renderCalendar = (() => {
         const containerWidth = window.innerWidth - 20;
         const mapHeight = 325;
         const numRows = Math.ceil(mapHeight / 85);
-        const numCols = Math.floor((containerWidth - 430) / 12);
+        const numCols = Math.floor((containerWidth - 429) / 12);
         const dateContainers = document.querySelectorAll('.date-outer-container');
         dateContainers.forEach((dateContainer, i) => {
             if ((i + 1) % numCols === 0 && i < numCols * numRows && containerWidth > 748) {

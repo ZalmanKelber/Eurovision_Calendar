@@ -22,11 +22,11 @@ const selectOperations = (() => {
     }
     
     const selectCountry = (country) => {
-        if (countries[country]) {
+        if (eurovisionData.countries[country]) {
             deselectCountries();
             const events = document.querySelectorAll('.event');
             events.forEach(event => {
-                if (event.classList.contains(`country-${countries[country].replace(' ', '-')}`)) {
+                if (event.classList.contains(`country-${eurovisionData.countries[country].replace(' ', '-')}`)) {
                     event.classList.add('active');
                 } else {
                     if (!event.classList.contains('key')) {
@@ -34,7 +34,7 @@ const selectOperations = (() => {
                     }
                 }
             });
-            document.querySelector(`.esc-${countries[country].replace(' ', '-')}`).classList.add('highlighted');
+            document.querySelector(`.esc-${eurovisionData.countries[country].replace(' ', '-')}`).classList.add('highlighted');
             const countryTitle = document.createElement('div');
             countryTitle.className = 'country-title';
             countryTitle.textContent = country.toUpperCase();

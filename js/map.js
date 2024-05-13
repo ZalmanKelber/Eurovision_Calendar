@@ -2,15 +2,9 @@ const renderMap = (() => {
     const state = {
       mapData: null,
       gMap: null,
-      gExtras: null,
-      extras: [
-        { "name": "malta", "lng": 35.9375, "lat": 14.3754 },
-        { "name": "san marino", "lng": 43.9424, "lat": 12.4578 },
-        // { "name": "australia", "longitude": 3, "latitude": 3 }
-      ]
     }
   
-    const { select, selectAll, json, geoPath, geoConicEqualArea, scalePow, zoom, zoomIdentity, drag } = d3;
+    const { select, selectAll, json, geoPath, geoConicEqualArea } = d3;
     const { feature } = topojson;
   
     let svg = select("#map");
@@ -48,8 +42,16 @@ const renderMap = (() => {
             .data(state.mapData.features)
             .enter().append("path")
             .attr("class", d => {
-                if (countries[d.properties.name.toLowerCase()]) {
-                    return `esc esc-${countries[d.properties.name.toLowerCase()].replace(' ', '-')}`;
+                if (eurovisionData.countries[d.properties.name.toLowerCase()]) {
+                    const countryName = eurovisionData.countries[d.properties.name.toLowerCase()].replace(' ', '-');
+                    if (eurovisionData.countriesWithNationalFinals.has(d.properties.name.toLowerCase())) {
+                        return `esc esc-${countryName}`;
+                    } else {
+                        return `esc esc-${countryName} internal-selection`;
+                    }
+                }
+                if (eurovisionData.nonReturningCountries.has(d.properties.name.toLowerCase())) {
+                    return 'not-esc non-returning'
                 }
                 return "not-esc";
             })
