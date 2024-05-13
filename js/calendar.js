@@ -74,11 +74,11 @@ const renderCalendar = (() => {
         const containerWidth = window.innerWidth - 20;
         const mapHeight = 325;
         const numRows = Math.ceil(mapHeight / 85);
-        const numCols = Math.floor((containerWidth - 429) / 12);
+        const numCols = Math.floor((containerWidth - 430) / 12);
         const dateContainers = document.querySelectorAll('.date-outer-container');
         dateContainers.forEach((dateContainer, i) => {
             if ((i + 1) % numCols === 0 && i < numCols * numRows && containerWidth > 748) {
-                dateContainer.setAttribute('style', `margin-right: ${containerWidth - numCols * 12}px`)
+                dateContainer.setAttribute('style', `margin-right: ${containerWidth - 1 - numCols * 12}px`)
             } else {
                 dateContainer.setAttribute('style', 'margin-right: 0');
             }
